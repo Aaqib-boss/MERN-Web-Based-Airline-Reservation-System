@@ -1,0 +1,270 @@
+.booking-flow-container {
+  max-width: 800px;
+  margin: 30px auto 60px;
+}
+
+.passenger-card {
+  margin-bottom: 20px;
+  padding: 24px;
+}
+
+.passenger-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+.light-mode .passenger-header {
+  border-bottom-color: rgba(0, 102, 204, 0.08);
+}
+
+.passenger-seat-badge {
+  background: var(--sky-accent);
+  color: #FFFFFF;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.form-grid-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 600px) {
+  .form-grid-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+/* Payment visual styles */
+.payment-methods-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 600px) {
+  .payment-methods-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.payment-method-card {
+  padding: 16px;
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.light-mode .payment-method-card {
+  border-color: rgba(0, 102, 204, 0.08);
+  background: rgba(0, 102, 204, 0.02);
+}
+
+.payment-method-card:hover {
+  border-color: var(--sky-accent);
+  background: rgba(0, 191, 255, 0.05);
+}
+
+.payment-method-card.active {
+  border-color: var(--sky-accent);
+  background: var(--gradient-accent);
+  color: #FFFFFF;
+}
+
+/* Credit Card visual mock */
+.credit-card-visual {
+  background: linear-gradient(135deg, #0F2038 0%, #0066CC 100%);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: var(--shadow-premium);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 180px;
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #FFFFFF;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-chip {
+  width: 40px;
+  height: 30px;
+  background: linear-gradient(135deg, #FFB800 0%, #FFCC00 100%);
+  border-radius: 6px;
+}
+
+.card-number-display {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin: 16px 0;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-holder-display {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+/* Payment Processing Loading Screen */
+.payment-loading-overlay {
+  text-align: center;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.payment-success-tick {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(0, 200, 83, 0.15);
+  border: 2px solid var(--success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44px;
+  color: var(--success);
+  animation: scale-up 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Confirmation Ticket Look */
+.ticket-wrapper {
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-premium);
+  margin-top: 24px;
+}
+
+.ticket-header {
+  background: var(--gradient-accent);
+  padding: 24px;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ticket-pnr-box {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.ticket-body {
+  padding: 24px;
+}
+
+.ticket-flight-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.light-mode .ticket-flight-info {
+  border-bottom-color: rgba(0, 102, 204, 0.1);
+}
+
+.ticket-passenger-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 14px;
+}
+
+.light-mode .ticket-passenger-row {
+  border-bottom-color: rgba(0, 102, 204, 0.05);
+}
+
+.ticket-passenger-row:last-child {
+  border-bottom: none;
+}
+
+.ticket-footer-barcode {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.light-mode .ticket-footer-barcode {
+  background: rgba(0, 102, 204, 0.02);
+  border-top-color: rgba(0, 102, 204, 0.1);
+}
+
+.barcode-stripes {
+  width: 100%;
+  max-width: 350px;
+  height: 48px;
+  background-image: repeating-linear-gradient(90deg, 
+    var(--text-primary), 
+    var(--text-primary) 2px, 
+    transparent 2px, 
+    transparent 6px,
+    var(--text-primary) 6px,
+    var(--text-primary) 10px
+  );
+  opacity: 0.6;
+}

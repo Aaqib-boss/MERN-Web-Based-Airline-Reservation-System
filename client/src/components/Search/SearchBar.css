@@ -1,0 +1,217 @@
+.search-widget-wrapper {
+  margin-top: -60px;
+  position: relative;
+  z-index: 10;
+  padding-bottom: 40px;
+}
+
+.search-widget-panel {
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.search-type-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 12px;
+}
+
+.light-mode .search-type-tabs {
+  border-bottom-color: rgba(0, 102, 204, 0.08);
+}
+
+.search-tab-btn {
+  padding: 8px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 20px;
+  color: var(--text-secondary);
+}
+
+.search-tab-btn.active {
+  background: var(--sky-primary);
+  color: #FFFFFF;
+}
+
+.search-form-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1.2fr 1fr 1fr 1fr;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+@media (max-width: 1024px) {
+  .search-form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .search-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.search-field-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.search-field-group label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.search-input-container {
+  position: relative;
+}
+
+.search-input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+.search-field-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-md);
+  color: var(--text-primary);
+  padding: 12px 16px 12px 42px;
+  font-weight: 600;
+  height: 48px;
+  transition: all 0.3s ease;
+}
+
+.light-mode .search-field-input {
+  background: rgba(0, 102, 204, 0.03);
+  border-color: rgba(0, 102, 204, 0.1);
+}
+
+.search-field-input:focus {
+  border-color: var(--sky-accent);
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
+}
+
+/* Autocomplete Dropdown */
+.autocomplete-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius-md);
+  margin-top: 6px;
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 100;
+  box-shadow: var(--shadow-premium);
+}
+
+.autocomplete-row {
+  padding: 10px 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.autocomplete-row:hover {
+  background: rgba(0, 102, 204, 0.15);
+}
+
+.autocomplete-city {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.autocomplete-airport {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.autocomplete-code {
+  font-family: var(--font-mono);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Passenger Dialog */
+.passenger-trigger-input {
+  cursor: pointer;
+}
+
+.passenger-dropdown-dialog {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 280px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius-lg);
+  padding: 20px;
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 100;
+  box-shadow: var(--shadow-premium);
+}
+
+.passenger-type-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.passenger-label-sub {
+  display: block;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.counter-btns {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.counter-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.counter-btn:hover {
+  background: var(--sky-primary);
+}
+
+.counter-value {
+  font-weight: 700;
+  font-size: 15px;
+  min-width: 16px;
+  text-align: center;
+}

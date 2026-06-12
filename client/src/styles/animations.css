@@ -1,0 +1,107 @@
+/* Page loading plane fly across screen */
+@keyframes flyAcross {
+  0% {
+    transform: translate(-10%, -50%) rotate(15deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(110%, -50%) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+.animate-fly {
+  animation: flyAcross 2.5s ease-in-out infinite;
+}
+
+/* Confetti particles floating */
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(0.3) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Card flip animation */
+.flip-card {
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  width: 100%;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Glow effects */
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 5px rgba(0, 191, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(0, 191, 255, 0.4);
+  }
+}
+
+.seat-glow {
+  animation: glowPulse 2s infinite;
+}
+
+/* General keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.animate-slide-in {
+  animation: slideInRight 0.3s ease forwards;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.shake-element {
+  animation: shake 0.2s ease-in-out 2;
+}

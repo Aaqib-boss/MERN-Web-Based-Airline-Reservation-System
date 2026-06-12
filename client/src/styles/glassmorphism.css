@@ -1,0 +1,100 @@
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-premium);
+  transition: border-color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(0, 191, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.glass-card {
+  background: rgba(15, 32, 56, 0.45);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--border-radius-lg);
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.light-mode .glass-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 102, 204, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 102, 204, 0.05);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-md);
+  color: var(--text-primary);
+  padding: 12px 16px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.light-mode .glass-input {
+  background: rgba(0, 102, 204, 0.03);
+  border: 1px solid rgba(0, 102, 204, 0.1);
+  color: var(--text-primary);
+}
+
+.glass-input:focus {
+  border-color: var(--sky-accent);
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
+}
+
+.glass-button {
+  display: inline-block;
+  background: var(--sky-primary);
+  color: #FFFFFF;
+  border-radius: var(--border-radius-md);
+  padding: 12px 24px;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+}
+
+.glass-button:hover {
+  background: #0077EE;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 102, 204, 0.45);
+}
+
+.glass-button:disabled {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.3);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.glass-button-secondary {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border-radius: var(--border-radius-md);
+  padding: 12px 24px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.light-mode .glass-button-secondary {
+  background: rgba(0, 102, 204, 0.05);
+  border: 1px solid rgba(0, 102, 204, 0.1);
+  color: var(--text-primary);
+}
+
+.glass-button-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}

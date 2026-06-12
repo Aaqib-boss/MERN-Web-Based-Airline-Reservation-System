@@ -1,0 +1,19 @@
+{
+  "name": "SkyWave Airlines",
+  "short_name": "SkyWave",
+  "description": "SkyWave Airlines Ticket Reservation System - Premium Commercial Flights Booking Platform",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0f1d",
+  "theme_color": "#0e1830",
+  "orientation": "portrait-primary",
+  "categories": ["travel", "utilities"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

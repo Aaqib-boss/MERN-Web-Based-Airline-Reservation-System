@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  # MongoDB Database Service
+  mongodb:
+    image: mongo:latest
+    container_name: skywave-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    restart: always
+
+  # Express API Backend Service
+  backend:
+    build: ./server
+    container_name: skywave-backend
+    ports:
+      - "5002:5002"
+    environment:
+      - PORT=5002
+      - MONGODB_URI=mongodb://mongodb:27017/skywave
+      - JWT_SECRET=skywaveaccesskey789!@#
+      - JWT_REFRESH_SECRET=skywaverefreshkey456$%^
+      - SOCKET_CORS_ORIGIN=*
+      - NODE_ENV=production
+    depends_on:
+      - mongodb
+    restart: always
+
+  # React Frontend + Nginx Proxy Service
+  frontend:
+    build: ./client
+    container_name: skywave-frontend
+    ports:
+      - "3002:80"
+      - "3003:81"
+      - "3004:82"
+    depends_on:
+      - backend
+    restart: always
+
+volumes:
+  mongo-data:
