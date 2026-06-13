@@ -4,71 +4,70 @@ SkyWave Airlines is a full-featured, modern, and highly secure flight booking an
 
 ---
 
+## 🌐 Live Demo
+
+| Portal | Link |
+|--------|------|
+| 🧳 **Traveler Portal** | [Live Link](https://airline-user-portal.vercel.app/) |
+| ⚙️ **Operations Admin Portal** | [Live Link](https://airline-admin-portal.vercel.app/) |
+| 👑 **Super Admin Portal** | [Live Link](https://airline-superadmin-portal.vercel.app/) |
+| 🔧 **Backend API** | https://mern-web-based-airline-reservation-system.onrender.com |
+
+---
+
 ## 🌟 Key Features
 
-| Feature                          | Description                                                                                    |
-| -------------------------------- | ---------------------------------------------------------------------------------------------- |
-| 🤖 AI-Powered Flight Suggestions | Highlights the best, cheapest, or fastest flights using a customized ranking engine            |
-| 🔒 Real-Time Seat Locking        | WebSockets lock selected seats for up to 8 minutes during checkout, preventing double-bookings |
-| 👑 Elite SkyWave Club            | Dynamic loyalty tiers (Bronze, Silver, Gold, Platinum) with automated rewards                  |
+| Feature | Description |
+|---------|-------------|
+| 🤖 AI-Powered Flight Suggestions | Highlights the best, cheapest, or fastest flights using a customized ranking engine |
+| 🔒 Real-Time Seat Locking | WebSockets lock selected seats for up to 8 minutes during checkout, preventing double-bookings |
+| 👑 Elite SkyWave Club | Dynamic loyalty tiers (Bronze, Silver, Gold, Platinum) with automated rewards |
 
 ---
 
 ## 🖥️ Three Specialized Portals
 
-| Portal                     | URL                   |
-| -------------------------- | --------------------- |
-| 🧳 Traveler Portal         | http://localhost:3002 |
-| ⚙️ Operations Admin Portal | http://localhost:3003 |
-| 👑 Super Admin Portal      | http://localhost:3004 |
+| Portal | Access |
+|--------|--------|
+| 🧳 Traveler Portal | Public booking & passenger dashboard |
+| ⚙️ Operations Admin Portal | Flight & booking management console |
+| 👑 Super Admin Portal | Full system control & analytics |
 
 ---
 
-## 🔐 Default Test Credentials
+## 🔐 Demo Credentials
 
-Use the following credentials to access each portal locally.
+| Role | Email | Password |
+|------|-------|----------|
+| 🧳 Customer User | user@skywave.com | password123 |
+| ⚙️ Operations Admin | admin@skywave.com | password123 |
+| 👑 Super Admin | superadmin@skywave.com | password123 |
 
-| Role                | Portal                         | Email                    | Password      |
-| ------------------- | ------------------------------ | ------------------------ | ------------- |
-| 🧳 Customer User    | Traveler Portal (3002)         | `user@skywave.com`       | `password123` |
-| ⚙️ Operations Admin | Operations Admin Portal (3003) | `admin@skywave.com`      | `password123` |
-| 👑 Super Admin      | Super Admin Portal (3004)      | `superadmin@skywave.com` | `password123` |
-
-> ⚠️ These credentials are intended for **local development and testing only**. Change all default credentials before deploying to production.
+> ⚠️ These are demo credentials for testing purposes only.
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer    | Technology                       |
-| -------- | -------------------------------- |
+| Layer | Technology |
+|-------|-----------|
 | Frontend | React, Vite, CSS (Glassmorphism) |
-| Backend  | Node.js, Express, Socket.io      |
-| Database | MongoDB, Mongoose                |
-| DevOps   | Docker, Docker Compose, Nginx    |
+| Backend | Node.js, Express, Socket.io |
+| Database | MongoDB Atlas |
+| Hosting | Vercel (Frontend), Render (Backend) |
 
 ---
 
-## 🚀 Getting Started
-
-### Option 1: Docker (Recommended)
-
-```bash
-docker-compose up --build
-```
-
-### Option 2: Local Setup
+## 🚀 Local Development
 
 ### Backend
-
 ```bash
 cd server
 npm install
 npm run dev
 ```
 
-### Frontend
-
+### Frontend (each portal)
 ```bash
 cd client
 npm install
@@ -77,8 +76,13 @@ npm run dev:admin
 npm run dev:superadmin
 ```
 
-### Access URLs
+Access locally:
+- 🧳 Traveler Portal → `http://localhost:3002`
+- ⚙️ Operations Admin Portal → `http://localhost:3003`
+- 👑 Super Admin Portal → `http://localhost:3004`
 
-* 🧳 Traveler Portal → `http://localhost:3002`
-* ⚙️ Operations Admin Portal → `http://localhost:3003`
-* 👑 Super Admin Portal → `http://localhost:3004`
+---
+
+## 📄 License
+
+This project is for educational/demo purposes.
