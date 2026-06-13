@@ -75,6 +75,73 @@ app.use('/api/users', cardRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/config', configRoutes);
 
+// Temporary one-time route to seed users without deleting existing data
+app.get('/api/seed-users-temp', async (req, res) => {
+  try {
+    const User = require('./models/User');
+    const bcrypt = require('bcryptjs');
+
+    const salt = await bcrypt.genSalt(12);
+    const passwordHash = await bcrypt.hash('password123', salt);
+
+    const demoUsers = [
+      {
+        name: 'SkyWave Traveler',
+        email: 'user@skywave.com',
+        passwordHash,
+        role: 'user',
+        loyaltyTier: 'Bronze',
+        loyaltyPoints: 1200,
+        passportNumber: 'Z1234567',
+        nationality: 'India',
+        dateOfBirth: '1995-05-15'
+      },
+      {
+        name: 'SkyWave Operations Admin',
+        email: 'admin@skywave.com',
+        passwordHash,
+        role: 'admin',
+        loyaltyTier: 'Gold',
+        loyaltyPoints: 18500,
+        passportNumber: 'A7654321',
+        nationality: 'United Kingdom',
+        dateOfBirth: '1988-10-22'
+      },
+      {
+        name: 'SkyWave System Director',
+        email: 'superadmin@skywave.com',
+        passwordHash,
+        role: 'superadmin',
+        loyaltyTier: 'Platinum',
+        loyaltyPoints: 42000,
+        passportNumber: 'S9876543',
+        nationality: 'United States',
+        dateOfBirth: '1980-01-01'
+      }
+    ];
+
+    const results = [];
+    for (const u of demoUsers) {
+      const exists = await User.findOne({ email: u.email });
+      if (!exists) {
+        await User.create(u);
+        results.push({ email: u.email, status: 'created' });
+      } else {
+        results.push({ email: u.email, status: 'already_exists' });
+      }
+    }
+
+    res.json({
+      success: true,
+      message: 'Temporary user seeding completed successfully.',
+      results
+    });
+  } catch (error) {
+    console.error('Temp seeding error:', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
 // Base route fallback
 app.get('/', (req, res) => {
   res.send('SkyWave Airlines API Server is running...');
