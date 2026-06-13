@@ -9,9 +9,9 @@ export default function Navbar({ onOpenLoginModal, isMobileMode }) {
   const { isDarkMode, toggleTheme } = useTheme();
   const { step, setStep, resetBooking } = useBooking();
 
-  const port = window.location.port;
-  const isOperationsPort = port === '3003';
-  const isSuperAdminPort = port === '3004';
+  const portalRole = import.meta.env.VITE_PORTAL_ROLE;
+  const isOperationsPort = portalRole === 'admin';
+  const isSuperAdminPort = portalRole === 'superadmin';
   const isAdminPort = isOperationsPort || isSuperAdminPort;
 
   const handleNavClick = (targetStep) => {

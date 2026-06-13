@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "https://mern-web-based-airline-reservation-system.onrender.com/api/:path*" },
+    { "source": "/socket.io/:path*", "destination": "https://mern-web-based-airline-reservation-system.onrender.com/socket.io/:path*" }
+  ]
+}

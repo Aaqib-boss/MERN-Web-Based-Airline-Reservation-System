@@ -34,17 +34,17 @@ export const AuthProvider = ({ children }) => {
           if (profileRes.ok) {
             const profileData = await profileRes.json();
             
-            // Check port authorization on startup
-            const port = window.location.port;
-            if (port === '3003' && profileData.role !== 'admin') {
+            // Check portal role authorization on startup
+            const portalRole = import.meta.env.VITE_PORTAL_ROLE;
+            if (portalRole === 'admin' && profileData.role !== 'admin') {
               console.warn('Session mismatch: Operations Admin portal requires admin role.');
               setUser(null);
               setToken(null);
-            } else if (port === '3004' && profileData.role !== 'superadmin') {
+            } else if (portalRole === 'superadmin' && profileData.role !== 'superadmin') {
               console.warn('Session mismatch: Super Admin portal requires superadmin role.');
               setUser(null);
               setToken(null);
-            } else if (port === '3002' && profileData.role !== 'user') {
+            } else if (portalRole === 'user' && profileData.role !== 'user') {
               console.warn('Session mismatch: Traveler portal requires user role.');
               setUser(null);
               setToken(null);
@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }) => {
           } else {
             // Fallback to minimal info from payload if it matches port role criteria
             const payload = JSON.parse(atob(data.accessToken.split('.')[1]));
-            const port = window.location.port;
+            const portalRole = import.meta.env.VITE_PORTAL_ROLE;
             // Note: payload doesn't contain role usually unless we put it. But we put it in the seed. Let's assume verification via /profile is the source of truth.
             // If profile cannot be loaded, we clear session.
             setUser(null);
@@ -83,17 +83,17 @@ export const AuthProvider = ({ children }) => {
     }
 
     const data = await res.json();
-    const port = window.location.port;
+    const portalRole = import.meta.env.VITE_PORTAL_ROLE;
 
-    // Enforce port role restrictions on login
-    if (port === '3003' && data.role !== 'admin') {
-      throw new Error('Access denied. This portal is reserved for Operations Admins on port 3003.');
+    // Enforce role restrictions on login
+    if (portalRole === 'admin' && data.role !== 'admin') {
+      throw new Error('Access denied. This portal is reserved for Operations Admins.');
     }
-    if (port === '3004' && data.role !== 'superadmin') {
-      throw new Error('Access denied. This portal is reserved for Super Admins on port 3004.');
+    if (portalRole === 'superadmin' && data.role !== 'superadmin') {
+      throw new Error('Access denied. This portal is reserved for Super Admins.');
     }
-    if (port === '3002' && data.role !== 'user') {
-      throw new Error('Access denied. Admins must log in through their respective portals on ports 3003/3004.');
+    if (portalRole === 'user' && data.role !== 'user') {
+      throw new Error('Access denied. Admins must log in through their respective portals.');
     }
 
     setUser({
@@ -112,8 +112,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (userData) => {
-    const port = window.location.port;
-    if (port === '3004') {
+    const portalRole = import.meta.env.VITE_PORTAL_ROLE;
+    if (portalRole === 'superadmin') {
       throw new Error('Access denied. Administrative accounts cannot be registered publicly.');
     }
 

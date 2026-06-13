@@ -48,10 +48,10 @@ export default function App() {
     fetchHomepageFeatures();
   }, []);
   
-  // Port detection
-  const port = window.location.port;
-  const isOperationsPort = port === '3003';
-  const isSuperAdminPort = port === '3004';
+  // Portal role detection via environment variable
+  const portalRole = import.meta.env.VITE_PORTAL_ROLE;
+  const isOperationsPort = portalRole === 'admin';
+  const isSuperAdminPort = portalRole === 'superadmin';
   const isAdminPort = isOperationsPort || isSuperAdminPort;
 
 
