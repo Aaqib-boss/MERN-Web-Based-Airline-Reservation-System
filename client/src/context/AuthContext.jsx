@@ -5,9 +5,9 @@ const AuthContext = createContext();
 const getPortalRole = () => {
   if (typeof window !== 'undefined' && window.location) {
     const port = window.location.port;
-    if (port === '3003') return 'admin';
-    if (port === '3004') return 'superadmin';
-    if (port === '3002') return 'user';
+    if (port === '3003' || port === '5174') return 'admin';
+    if (port === '3004' || port === '5175') return 'superadmin';
+    if (port === '3002' || port === '5173') return 'user';
   }
   return import.meta.env.VITE_PORTAL_ROLE || 'user';
 };
