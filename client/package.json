@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "dev:user": "cross-env VITE_PORTAL_ROLE=user vite --port 3002",
-    "dev:admin": "cross-env VITE_PORTAL_ROLE=admin vite --port 3003",
-    "dev:superadmin": "cross-env VITE_PORTAL_ROLE=superadmin vite --port 3004",
+    "dev": "vite --host",
+    "dev:user": "cross-env VITE_PORTAL_ROLE=user vite --host --port 3002",
+    "dev:admin": "cross-env VITE_PORTAL_ROLE=admin vite --host --port 3003",
+    "dev:superadmin": "cross-env VITE_PORTAL_ROLE=superadmin vite --host --port 3004",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
