@@ -21,9 +21,30 @@
 
 .navbar-content {
   width: 100%;
+  padding: 0 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.nav-col-left {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.nav-col-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-col-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .logo {
