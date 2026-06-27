@@ -3,15 +3,13 @@ import React, { createContext, useState, useEffect, useContext } from 'react';
 const AuthContext = createContext();
 
 const getPortalRole = () => {
-  const envRole = import.meta.env.VITE_PORTAL_ROLE;
-  if (envRole) return envRole;
   if (typeof window !== 'undefined' && window.location) {
     const port = window.location.port;
     if (port === '3003') return 'admin';
     if (port === '3004') return 'superadmin';
     if (port === '3002') return 'user';
   }
-  return 'user';
+  return import.meta.env.VITE_PORTAL_ROLE || 'user';
 };
 
 export const AuthProvider = ({ children }) => {
