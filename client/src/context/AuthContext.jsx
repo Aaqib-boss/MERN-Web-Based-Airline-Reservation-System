@@ -2,6 +2,18 @@ import React, { createContext, useState, useEffect, useContext } from 'react';
 
 const AuthContext = createContext();
 
+const getPortalRole = () => {
+  const envRole = import.meta.env.VITE_PORTAL_ROLE;
+  if (envRole) return envRole;
+  if (typeof window !== 'undefined' && window.location) {
+    const port = window.location.port;
+    if (port === '3003') return 'admin';
+    if (port === '3004') return 'superadmin';
+    if (port === '3002') return 'user';
+  }
+  return 'user';
+};
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
@@ -35,7 +47,7 @@ export const AuthProvider = ({ children }) => {
             const profileData = await profileRes.json();
             
             // Check portal role authorization on startup
-            const portalRole = import.meta.env.VITE_PORTAL_ROLE;
+            const portalRole = getPortalRole();
             if (portalRole === 'admin' && profileData.role !== 'admin') {
               console.warn('Session mismatch: Operations Admin portal requires admin role.');
               setUser(null);
@@ -54,7 +66,7 @@ export const AuthProvider = ({ children }) => {
           } else {
             // Fallback to minimal info from payload if it matches port role criteria
             const payload = JSON.parse(atob(data.accessToken.split('.')[1]));
-            const portalRole = import.meta.env.VITE_PORTAL_ROLE;
+            const portalRole = getPortalRole();
             // Note: payload doesn't contain role usually unless we put it. But we put it in the seed. Let's assume verification via /profile is the source of truth.
             // If profile cannot be loaded, we clear session.
             setUser(null);
@@ -83,7 +95,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     const data = await res.json();
-    const portalRole = import.meta.env.VITE_PORTAL_ROLE;
+    const portalRole = getPortalRole();
 
     // Enforce role restrictions on login
     if (portalRole === 'admin' && data.role !== 'admin') {
@@ -112,7 +124,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (userData) => {
-    const portalRole = import.meta.env.VITE_PORTAL_ROLE;
+    const portalRole = getPortalRole();
     if (portalRole === 'superadmin') {
       throw new Error('Access denied. Administrative accounts cannot be registered publicly.');
     }

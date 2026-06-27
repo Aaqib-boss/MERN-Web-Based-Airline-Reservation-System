@@ -48,8 +48,20 @@ export default function App() {
     fetchHomepageFeatures();
   }, []);
   
-  // Portal role detection via environment variable
-  const portalRole = import.meta.env.VITE_PORTAL_ROLE;
+  // Portal role detection via environment variable and port fallback
+  const getPortalRole = () => {
+    const envRole = import.meta.env.VITE_PORTAL_ROLE;
+    if (envRole) return envRole;
+    if (typeof window !== 'undefined' && window.location) {
+      const port = window.location.port;
+      if (port === '3003') return 'admin';
+      if (port === '3004') return 'superadmin';
+      if (port === '3002') return 'user';
+    }
+    return 'user';
+  };
+
+  const portalRole = getPortalRole();
   const isOperationsPort = portalRole === 'admin';
   const isSuperAdminPort = portalRole === 'superadmin';
   const isAdminPort = isOperationsPort || isSuperAdminPort;
