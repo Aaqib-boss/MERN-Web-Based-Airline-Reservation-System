@@ -135,7 +135,7 @@ router.get('/:id/card/pdf', protect, async (req, res, next) => {
     currentY += 16;
 
     // Member / Employee ID
-    const displayId = user.employeeId || user.memberId || 'SW-MBR-PENDING';
+    const displayId = user.employeeId || user.memberId || `SW-MBR-${user._id.toString().substring(18).toUpperCase()}`;
     doc.fillColor('#475569').font('Helvetica').fontSize(10);
     doc.text('ID NUMBER:', infoX, currentY);
     doc.fillColor('#0f172a').font('Helvetica-Bold').text(displayId, infoX + 70, currentY);
@@ -150,7 +150,8 @@ router.get('/:id/card/pdf', protect, async (req, res, next) => {
 
       doc.fillColor('#475569').font('Helvetica').fontSize(10);
       doc.text('CLUB NO:', infoX, currentY);
-      doc.fillColor('#0f172a').font('Helvetica-Bold').text(user.membershipNumber || 'N/A', infoX + 70, currentY);
+      const displayClubNo = user.membershipNumber || user._id.toString().substring(0, 12).toUpperCase();
+      doc.fillColor('#0f172a').font('Helvetica-Bold').text(displayClubNo, infoX + 70, currentY);
     } else {
       doc.fillColor('#475569').font('Helvetica').fontSize(10);
       doc.text('DEPT/CRED:', infoX, currentY);
