@@ -150,7 +150,7 @@ router.get('/:id/card/pdf', protect, async (req, res, next) => {
 
       doc.fillColor('#475569').font('Helvetica').fontSize(10);
       doc.text('CLUB NO:', infoX, currentY);
-      const displayClubNo = user.membershipNumber || user._id.toString().substring(0, 12).toUpperCase();
+      const displayClubNo = user.membershipNumber || formatClubNo(user._id);
       doc.fillColor('#0f172a').font('Helvetica-Bold').text(displayClubNo, infoX + 70, currentY);
     } else {
       doc.fillColor('#475569').font('Helvetica').fontSize(10);
@@ -262,3 +262,30 @@ router.get('/:id/card/verify', async (req, res, next) => {
 });
 
 module.exports = router;
+
+// Helper to format Club Number deterministically into ABC-123 format
+function formatClubNo(userId) {
+  if (!userId) return 'SWA-777';
+  const clean = userId.toString().replace(/[^a-fA-F0-9]/g, '').toUpperCase();
+  const letterMap = {
+    '0': 'P', '1': 'Q', '2': 'R', '3': 'S', '4': 'T', '5': 'U', '6': 'V', '7': 'W', '8': 'X', '9': 'Y',
+    'A': 'A', 'B': 'B', 'C': 'C', 'D': 'D', 'E': 'E', 'F': 'F'
+  };
+  let letters = '';
+  for (let i = 0; i < 3 && i < clean.length; i++) {
+    letters += letterMap[clean[i]] || 'S';
+  }
+  while (letters.length < 3) letters += 'S';
+
+  const digitMap = {
+    'A': '0', 'B': '1', 'C': '2', 'D': '3', 'E': '4', 'F': '5',
+    '0': '0', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9'
+  };
+  let digits = '';
+  for (let i = 3; i < 6 && i < clean.length; i++) {
+    digits += digitMap[clean[i]] || '7';
+  }
+  while (digits.length < 3) digits += '7';
+
+  return `${letters}-${digits}`;
+}
